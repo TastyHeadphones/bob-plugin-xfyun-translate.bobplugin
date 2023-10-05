@@ -1,0 +1,29 @@
+{
+    "identifier": "translate.tastyheadphones.github.io",
+    "version": "0.0.1",
+    "category": "translate",
+    "name": "xfyun",
+    "summary": "xfyun ai translate",
+    "icon": "001",
+    "author": "tastyheadphones",
+    "homepage": "https://github.com/TastyHeadphones/bob-plugin-xfyun-translate.bobplugin",
+    "appcast": "",
+    "minBobVersion": "1.8.0",
+    "options": [
+        {
+            "identifier": "APPID",
+            "type": "text",
+            "title": "APPID"
+        },
+        {
+            "identifier": "APISecret",
+            "type": "text",
+            "title": "APISecret"
+        },
+        {
+            "identifier": "APIKey",
+            "type": "text",
+            "title": "APIKey"
+        }
+    ]
+}
