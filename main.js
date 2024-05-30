@@ -1,5 +1,5 @@
-var lang = require("./lang.js");
-var spark = require("./spark.js");
+var lang = require('./lang.js');
+var spark = require('./spark.js');
 
 function supportLanguages() {
   return lang.supportedLanguages.map(([standardLang]) => standardLang);
@@ -7,22 +7,30 @@ function supportLanguages() {
 
 function translate(query, completion) {
   const socket = spark.createSocket();
-  const promt = "现在你是一个翻译器，把冒号后的文本进行翻译，如果是中文翻译成英文，如果是其他语言则翻译成中文，仅包含翻译后的文本： ";
-
+  const promt =
+    '现在你是一个翻译器，把冒号后的文本进行翻译，如果是中文翻译成英文，如果是其他语言则翻译成中文，仅包含翻译后的文本： ';
+  const versionDomainMap = {
+    'v3.5': 'v3.5',
+    'v3.1': 'v3',
+    'v2.1': 'v2',
+    'v1.1': '',
+  };
+  const domain =
+    $option.APIVersion === 'custom' ? $option.customModelDomain : `general${versionDomainMap[$option.APIVersion]}`;
   const requestObject = {
     header: {
       app_id: $option.APPID,
     },
     parameter: {
       chat: {
-        domain: "generalv2",
+        domain,
       },
     },
     payload: {
       message: {
         text: [
           {
-            role: "user",
+            role: 'user',
             content: promt + query.text,
           },
         ],
@@ -33,7 +41,7 @@ function translate(query, completion) {
     $log.info(`did open`);
     socket.sendString(JSON.stringify(requestObject));
   });
-  var receiveString = "";
+  var receiveString = '';
   socket.listenReceiveString(function (socket, string) {
     $log.info(`did receive string: ${string}`);
     const currentMessage = JSON.parse(string).payload.choices.text[0].content;
