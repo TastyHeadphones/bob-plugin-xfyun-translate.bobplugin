@@ -1,29 +1,77 @@
 {
-    "identifier": "translate.tastyheadphones.github.io",
-    "version": "0.0.1",
-    "category": "translate",
-    "name": "xfyun",
-    "summary": "xfyun ai translate",
-    "icon": "001",
-    "author": "tastyheadphones",
-    "homepage": "https://github.com/TastyHeadphones/bob-plugin-xfyun-translate.bobplugin",
-    "appcast": "",
-    "minBobVersion": "1.8.0",
-    "options": [
+  "identifier": "translate.tastyheadphones.github.io",
+  "version": "0.0.2",
+  "category": "translate",
+  "name": "xfyun",
+  "summary": "xfyun ai translate",
+  "icon": "001",
+  "author": "tastyheadphones",
+  "homepage": "https://github.com/TastyHeadphones/bob-plugin-xfyun-translate.bobplugin",
+  "appcast": "",
+  "minBobVersion": "1.8.0",
+  "options": [
+    {
+      "identifier": "APPID",
+      "type": "text",
+      "title": "APPID"
+    },
+    {
+      "identifier": "APISecret",
+      "type": "text",
+      "title": "APISecret"
+    },
+    {
+      "identifier": "APIKey",
+      "type": "text",
+      "title": "APIKey"
+    },
+    {
+      "identifier": "APIVersion",
+      "type": "menu",
+      "title": "模型版本",
+      "defaultValue": "v1.1",
+      "menuValues": [
         {
-            "identifier": "APPID",
-            "type": "text",
-            "title": "APPID"
+          "title": "Custom",
+          "value": "custom"
         },
         {
-            "identifier": "APISecret",
-            "type": "text",
-            "title": "APISecret"
+          "title": "Spark3.5 Max",
+          "value": "v3.5"
         },
         {
-            "identifier": "APIKey",
-            "type": "text",
-            "title": "APIKey"
+          "title": "Spark Pro",
+          "value": "v3.1"
+        },
+        {
+          "title": "Spark V2.0",
+          "value": "v2.1"
+        },
+        {
+          "title": "Spark Lite",
+          "value": "v1.1"
         }
-    ]
+      ]
+    },
+    {
+      "identifier": "customModelVersion",
+      "type": "text",
+      "title": "自定义模型版本",
+      "desc": "可选项。当 模型 选择 Custom 时，此项为必填项。请填写有效的模型版本",
+      "textConfig": {
+        "type": "visible",
+        "placeholderText": "v3.5"
+      }
+    },
+    {
+      "identifier": "customModelDomain",
+      "type": "text",
+      "title": "自定义模型domain",
+      "desc": "可选项。当 模型 选择 Custom 时，此项为必填项。请填写有效的模型domain",
+      "textConfig": {
+        "type": "visible",
+        "placeholderText": "generalv3.5"
+      }
+    }
+  ]
 }
